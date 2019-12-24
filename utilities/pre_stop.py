@@ -2,9 +2,16 @@ import json
 import os
 import requests
 
-from utilities.get_hostname import get_hostname
-from utilities import LAB_ID
+# from utilities.get_hostname import get_hostname
+# from utilities import LAB_ID
 
+
+def get_hostname():
+    import socket
+    hostname = socket.gethostname()
+    return hostname.strip('Jupyter-')
+
+LAB_ID = '1'
 url = 'https://ibeyzvgkq8.execute-api.ap-south-1.amazonaws.com/dev/base'
 
 data = {

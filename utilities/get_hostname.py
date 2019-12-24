@@ -1,4 +1,4 @@
 def get_hostname():
     import socket
-    hostname = socker.gethostname()
+    hostname = socket.gethostname()
     return hostname.strip('Jupyter-')
