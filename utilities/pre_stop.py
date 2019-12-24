@@ -38,7 +38,7 @@ try:
     response = requests.post(url=url, data=json.dumps(data), headers=headers)
     presigned_post_response = response.json()
 
-    os.system('tar -cvzf /home/jovyan/notebooks.tar /home/jovyan/notebooks')
+    os.system('tar -cvzf /home/jovyan/notebooks.tar -C /home/jovyan notebooks')
 
     write_with_presigned_url(presigned_post_response, '/home/jovyan/notebooks.tar')
 except Exception as e:

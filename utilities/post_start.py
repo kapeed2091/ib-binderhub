@@ -27,7 +27,11 @@ try:
     response = requests.post(url=url, data=json.dumps(data), headers=headers)
     download_url = response.json()['url']
 
-    requests.get(download_url)
+    response = requests.get(download_url)
+    with open('/home/jovyan/notebooks.tar', 'wb') as f:
+        f.write(response.content)
+
     os.system('tar -xvzf /home/jovyan/notebooks.tar')
-except:
+except Exception as e:
+    print('Exception in post_start:', e)
     pass
