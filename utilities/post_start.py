@@ -9,7 +9,7 @@ import requests
 def get_hostname():
     import socket
     hostname = socket.gethostname()
-    return hostname.strip('Jupyter-')
+    return hostname.strip('jupyter-')
 
 
 LAB_ID = '1'
@@ -28,6 +28,6 @@ try:
     download_url = response.json()['url']
 
     requests.get(download_url)
-    os.system('tar -xvzf notebooks.tar')
+    os.system('tar -xvzf /home/jovyan/notebooks.tar')
 except:
     pass
