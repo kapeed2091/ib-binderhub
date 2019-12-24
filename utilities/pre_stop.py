@@ -6,6 +6,17 @@ import requests
 # from utilities import LAB_ID
 
 
+def write_with_presigned_url(presigned_post_response, file_to_write):
+    with open(file_to_write, 'rb') as f:
+        files = {'file': (file_to_write, f)}
+        requests.post(
+            presigned_post_response['url'],
+            data=presigned_post_response['fields'],
+            files=files
+        )
+    return
+
+
 def get_hostname():
     import socket
     hostname = socket.gethostname()
@@ -28,7 +39,6 @@ try:
 
     os.system('tar -cvzf notebooks.tar notebooks')
 
-    from utilities.s3_utility import S3Utility
-    S3Utility.write_with_presigned_url(presigned_post_response, notebooks.tar)
+    write_with_presigned_url(presigned_post_response, notebooks.tar)
 except:
     pass
