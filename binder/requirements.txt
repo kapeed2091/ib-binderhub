@@ -1,0 +1,5 @@
+nbzip
+nbgitpuller
+jupyter_contrib_nbextensions
+backoff==1.8.0
+requests
